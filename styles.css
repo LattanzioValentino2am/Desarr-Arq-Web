@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.logo {
+    width: 30%;
+    display: block;
+    margin: 20px auto;
+}
+
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+}
+
+h1 {
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.subtitulo {
+    color: #666;
+    font-style: italic;
+}
+
+.main-img {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.noticia-btn {
+    display: inline-block;
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.noticia-btn:hover {
+    background-color: #003f7f;
+}
+
+.relacionada img {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin-top: 20px;
+}
+
+figcaption {
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+form {
+    margin-top: 30px;
+    background-color: #f1f1f1;
+    padding: 50px;
+    border-radius: 8px;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 11px;
+}
+
+form input[type="submit"] {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #003f7f;
+}
+
