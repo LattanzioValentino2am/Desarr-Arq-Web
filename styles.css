@@ -18,21 +18,26 @@ main {
     margin: 0 auto;
     padding: 20px;
     background-color: white;
+    box-sizing: border-box;
 }
 
 h1 {
     color: #333;
     font-size: 1.8rem;
+    margin-bottom: 10px;
 }
 
 .subtitulo {
     color: #666;
     font-style: italic;
+    margin-bottom: 20px;
 }
 
 .main-img {
     width: 100%;
     margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .noticia-btn {
@@ -49,11 +54,18 @@ h1 {
     background-color: #003f7f;
 }
 
+.relacionada {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+}
+
 .relacionada img {
     width: 100%;
     max-width: 400px;
     display: block;
-    margin-top: 20px;
+    border-radius: 6px;
 }
 
 figcaption {
@@ -66,6 +78,7 @@ form {
     background-color: #f1f1f1;
     padding: 50px;
     border-radius: 8px;
+    box-sizing: border-box;
 }
 
 form label {
@@ -79,6 +92,9 @@ form textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 11px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 form input[type="submit"] {
@@ -86,9 +102,44 @@ form input[type="submit"] {
     color: white;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 form input[type="submit"]:hover {
     background-color: #003f7f;
+}
+
+@media (min-width: 768px) {
+    .relacionada {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .relacionada img {
+        margin-right: 20px;
+    }
+
+    figcaption {
+        flex: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .logo {
+        width: 80%;
+    }
+
+    form {
+        padding: 30px;
+    }
+
+    .noticia-btn {
+        width: 100%;
+        text-align: center;
+    }
 }
 
