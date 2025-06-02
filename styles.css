@@ -4,26 +4,32 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .logo {
-    width: 30%;
-    display: block;
+    width: 80%;
+    max-width: 300px;
     margin: 20px auto;
+    display: block;
 }
 
 main {
-    width: 90%;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
     max-width: 900px;
-    margin: 0 auto;
     padding: 20px;
     background-color: white;
     box-sizing: border-box;
+    gap: 40px;
 }
 
 h1 {
     color: #333;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin-bottom: 10px;
 }
 
@@ -41,13 +47,14 @@ h1 {
 }
 
 .noticia-btn {
-    display: inline-block;
+    display: block;
     background-color: #0056b3;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
     margin: 20px 0;
     border-radius: 5px;
+    text-align: center;
 }
 
 .noticia-btn:hover {
@@ -64,7 +71,6 @@ h1 {
 .relacionada img {
     width: 100%;
     max-width: 400px;
-    display: block;
     border-radius: 6px;
 }
 
@@ -73,17 +79,23 @@ figcaption {
     margin-top: 10px;
 }
 
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
 form {
-    margin-top: 30px;
     background-color: #f1f1f1;
-    padding: 50px;
+    padding: 30px;
     border-radius: 8px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 form label {
-    display: block;
-    margin: 10px 0 5px;
+    font-weight: bold;
 }
 
 form input,
@@ -91,7 +103,6 @@ form select,
 form textarea {
     width: 100%;
     padding: 10px;
-    margin-bottom: 11px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -110,36 +121,36 @@ form input[type="submit"]:hover {
 }
 
 @media (min-width: 768px) {
+    main {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+    article.noticia {
+        flex: 2;
+    }
+
+    .formulario {
+        flex: 1;
+    }
+
     .relacionada {
         flex-direction: row;
         align-items: center;
-    }
-
-    .relacionada img {
-        margin-right: 20px;
+        gap: 20px;
     }
 
     figcaption {
-        flex: 1;
+        margin-top: 0;
     }
-}
 
-@media (max-width: 480px) {
     h1 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 
     .logo {
-        width: 80%;
-    }
-
-    form {
-        padding: 30px;
-    }
-
-    .noticia-btn {
-        width: 100%;
-        text-align: center;
+        width: 300  px;
+        max-width: none;
     }
 }
-
