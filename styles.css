@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -9,6 +10,7 @@ body {
     align-items: center;
 }
 
+
 .logo {
     width: 80%;
     max-width: 300px;
@@ -17,8 +19,6 @@ body {
 }
 
 main {
-    display: flex;
-    flex-direction: column;
     width: 95%;
     max-width: 900px;
     padding: 20px;
@@ -46,6 +46,7 @@ h1 {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Enlace destacado */
 .noticia-btn {
     display: block;
     background-color: #0056b3;
@@ -79,40 +80,58 @@ figcaption {
     margin-top: 10px;
 }
 
-.formulario {
-    display: flex;
-    flex-direction: column;
+.formulario-container {
+    width: 100%;
+    margin-top: 40px; 
 }
 
 form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     background-color: #f1f1f1;
     padding: 30px;
     border-radius: 8px;
     box-sizing: border-box;
+}
+
+.form-group {
     display: flex;
     flex-direction: column;
-    gap: 15px;
 }
 
 form label {
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 form input,
 form select,
 form textarea {
-    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 0.95rem;
     box-sizing: border-box;
+    width: 100%;
+}
+
+.error {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 4px;
 }
 
 form input[type="submit"] {
     background-color: #0056b3;
     color: white;
     border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
     cursor: pointer;
+    border-radius: 6px;
+    align-self: center;
+    width: 50%;
     transition: background-color 0.3s ease;
 }
 
@@ -120,19 +139,33 @@ form input[type="submit"]:hover {
     background-color: #003f7f;
 }
 
+/* Layout responsive en escritorio */
 @media (min-width: 768px) {
-    main {
+    form {
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: space-between;
+    }
+
+    .form-group {
+        width: 48%;
+    }
+
+    .form-group.full-width {
+        width: 100%;
+    }
+
+    form input[type="submit"] {
+        width: 200px;
+        margin-top: 20px;
+    }
+
+    main {
         gap: 30px;
     }
 
     article.noticia {
-        flex: 2;
-    }
-
-    .formulario {
-        flex: 1;
+        width: 100%;
     }
 
     .relacionada {
@@ -150,7 +183,14 @@ form input[type="submit"]:hover {
     }
 
     .logo {
-        width: 300  px;
+        width: 300px;
         max-width: none;
+    }
+
+    .form-titulo {
+        margin-top: 40px;
+        font-size: 1.6rem;
+        color: #333;
+        text-align: center;
     }
 }

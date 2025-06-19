@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noticia - Swap con China</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="logica.js"></script>
 </head>
 <body>
     <header>
@@ -24,10 +25,13 @@
             
             <section class="contenido">
                 <p><strong>Banco Central</strong> y el <strong>Banco Central de la República Popular de China</strong> acordaron renovar el tramo activado del acuerdo bilateral del swap por RMB 35.000 millones.</p>
-                <p>Esto le permitirá al BCRA reducir riesgos en la transición monetaria en un contexto desafiante.</p>
-                <p>El economista Federico Machado explicó en X que no se deberán reintegrar los US$4800 millones usados hasta mitad de 2026.</p>
-                <p>Gabriel Caamaño valoró el anuncio porque evita el pago de casi US$5000 millones usados en 2023.</p>
-                <p>Claver-Carone expresó preocupación por el vínculo entre China y Argentina, y sugirió que se finalice la línea de crédito.</p>
+                <p>La activación de este tramo, que se inició en 2023 y, tras renovarse en junio de 2024, debía comenzar a reducirse gradualmente a partir de junio 2025, seguirá manteniéndose a disposición del BCRA, en su totalidad, hasta mediados de 2026.</p>
+                <p>En tanto, Gabriel Caamaño, director de la consultora Outlier, consideró también que el anuncio es bueno, porque no hay que pagar esos casi US$5000 millones que se usaron al cierre de 2023 (por la administración de Alberto Fernández para intervenir 
+                    en el mercado de cambios cuando se quedó sin dólares) y que un funcionario de Estados Unidos había reclamado que se cancelen en referencia al enviado especial para América Latina del presidente Donald Trump, Mauricion Claver Carone.</p>
+                <p>En una conferencia en el Miami Dade College, Claver-Carone aseguró hace una semana que el presidente Javier Milei “es un aliado” y expresó su preocupación por el vínculo entre China y la Argentina. “Nos preocupa. Es un problema que heredó 
+                    el presidente Milei. No me voy a entrometer en medio de unas negociaciones que se están llevando a cabo con el FMI, que queremos que tengan éxito... pero lo que sí queremos es que eventualmente termine la famosa línea de crédito que tiene 
+                    Argentina con China. Lo que queremos asegurarnos es que ningún acuerdo con el FMI termine prolongando esa línea de crédito”, señaló.
+                </p>
             </section>
 
             <h2>Seguí leyendo</h2>
@@ -41,36 +45,63 @@
             </section>
         </article>
 
-        <section class="formulario"> 
-            <h3>¿Querés suscribirte a nuestra revista? Completá el siguiente formulario:</h3>
-            <form action="index.html">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="nombre" required>
+        <h2 class="form-titulo">Suscribite para más contenido.</h2>
 
-                <label for="lastname">Apellido:</label>
-                <input type="text" id="lastname" name="apellido" required>
+        <section><form id="formulario-suscripcion">
+            <div class="form-group">
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" name="nombre">
+            </div>
 
-                <label for="genero">Género:</label>
-                <select id="genero" name="genero">
-                    <option value="Masculino">Masculino</option>
-                    <option value="Femenino">Femenino</option>
-                </select>
-
+            <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email">
+            </div>
 
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password">
+            </div>
+
+            <div class="form-group">
+                <label for="repeat-password">Repetir contraseña:</label>
+                <input type="password" id="repeat-password" name="repeat-password">
+            </div>
+
+            <div class="form-group">
                 <label for="edad">Edad:</label>
-                <input type="number" id="edad" name="edad" min="1" required>
+                <input type="number" id="edad" name="edad">
+            </div>
 
+            <div class="form-group">
                 <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono">
+                <input type="text" id="telefono" name="telefono">
+            </div>
 
-                <label for="mensaje">¿Por qué te gustaría ser miembro?</label>
-                <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+            <div class="form-group">
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion">
+            </div>
 
+            <div class="form-group">
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" id="ciudad" name="ciudad">
+            </div>
+
+            <div class="form-group">
+                <label for="codigo-postal">Código Postal:</label>
+                <input type="text" id="codigo-postal" name="codigo-postal">
+            </div>
+
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni">
+            </div>
+
+            <div class="form-group full-width">
                 <input type="submit" value="Enviar">
-            </form>
-        </section>
+            </div>
+        </form></section>
     </main>
 </body>
 </html>
