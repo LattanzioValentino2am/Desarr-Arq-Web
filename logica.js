@@ -8,12 +8,12 @@ window.addEventListener('DOMContentLoaded', () => {
         },
         email: {
             element: document.getElementById('email'),
-            validate: value => /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value),
+            validate: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
             message: 'Formato de email no válido.'
         },
         password: {
             element: document.getElementById('password'),
-            validate: value => /^(?=.*[a-zA-Z])(?=.*\\d).{8,}$/.test(value),
+            validate: value => /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/.test(value),
             message: 'Debe tener al menos 8 caracteres, letras y números.'
         },
         repeatPassword: {
@@ -28,12 +28,12 @@ window.addEventListener('DOMContentLoaded', () => {
         },
         telefono: {
             element: document.getElementById('telefono'),
-            validate: value => /^\\d{7,}$/.test(value),
+            validate: value => /^\d{7,}$/.test(value),
             message: 'Debe contener al menos 7 dígitos sin símbolos.'
         },
         direccion: {
             element: document.getElementById('direccion'),
-            validate: value => value.length >= 5 && /[a-zA-Z]/.test(value) && /\\d/.test(value) && /\\s/.test(value),
+            validate: value => value.length >= 5 && /[a-zA-Z]/.test(value) && /\d/.test(value) && /\s/.test(value),
             message: 'Debe tener letras, números y un espacio, mínimo 5 caracteres.'
         },
         ciudad: {
@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', () => {
         },
         dni: {
             element: document.getElementById('dni'),
-            validate: value => /^\\d{7,8}$/.test(value),
+            validate: value => /^\d{7,8}$/.test(value),
             message: 'Debe tener 7 u 8 dígitos.'
         }
     };
@@ -82,20 +82,66 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    form.addEventListener('submit', e => {
+   
+    form.addEventListener('submit', async e => {
         e.preventDefault();
         let isValid = true;
-        let formData = '';
+        const params = new URLSearchParams();
+
         Object.entries(fields).forEach(([key, { element, validate, message }]) => {
             const value = element.value.trim();
             if (!validate(value)) {
                 showError(element, message);
                 isValid = false;
             } else {
-                formData += `${key}: ${value}\\n`;
+                params.append(key, value);
             }
         });
 
-        alert(isValid ? `Formulario válido:\\n\\n${formData}` : 'Formulario inválido. Verificá los campos marcados.');
+        if (!isValid) {
+            mostrarModal('Formulario inválido. Verificá los campos marcados.');
+            return;
+        }
+
+        try {
+            const url = `http://curso-dev-2021.herokuapp.com/newsletter?${params.toString()}`;
+            const response = await fetch(url);
+
+            const data = await response.json();
+
+            if (response.ok) {
+                mostrarModal(`✅ Suscripción exitosa.<br><br><strong>Respuesta:</strong><br>${JSON.stringify(data)}`);
+                localStorage.setItem('datosNewsletter', JSON.stringify(Object.fromEntries(params)));
+            } else {
+                mostrarModal(`❌ Error en la suscripción.<br><br><strong>Detalles:</strong><br>${data?.error || 'Error desconocido.'}`);
+            }
+        } catch (err) {
+            mostrarModal('⚠️ Error de conexión con el servidor.');
+        }
+    
     });
+
+    function mostrarModal(mensaje) {
+        const modal = document.getElementById('modal');
+        const contenido = document.getElementById('modal-mensaje');
+        contenido.innerHTML = mensaje;
+        modal.classList.remove('oculto');
+    }
+
+    document.getElementById('cerrar-modal').addEventListener('click', () => {
+        document.getElementById('modal').classList.add('oculto');
+    });
+
+    // Cargar valores previos si existen
+    const datosPrevios = localStorage.getItem('datosNewsletter');
+    if (datosPrevios) {
+        const datos = JSON.parse(datosPrevios);
+        Object.entries(fields).forEach(([key, { element }]) => {
+            if (datos[key]) {
+                element.value = datos[key];
+            }
+        });
+    }
+
+
 });
